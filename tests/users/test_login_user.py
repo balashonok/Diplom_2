@@ -5,19 +5,20 @@ from methods.user_methods import UserMethods
 from data import USER_PAYLOAD
 from errors import UserErrors
 
-class TestUserLogin():
+@allure.feature('Авторизация пользователя')
+class TestLoginUser:
 
     @allure.title('Успешная авторизация пользователя, получен статус 200')
-    def test_user_login(self):
+    def test_login_user(self):
         user = UserMethods
-        payload = USER_PAYLOAD
+        payload = USER_PAYLOAD.copy()
         payload.pop('name')
         status_code, response_context = user.login(payload)
-        assert status_code == 200
+        assert status_code == 200 and 'accessToken' in response_context
 
-    @allure.title('Авторизация пользователя, в одном из полей ошибка, получен статус 401')
     @pytest.mark.parametrize('wrong_field', ['email', 'password'])
-    def test_user_login_wrong_field(self, wrong_field):
+    @allure.title('Авторизация пользователя, ошибка в поле {wrong_field}, получен статус 401')
+    def test_login_user_wrong_field(self, wrong_field):
         user = UserMethods
         payload = USER_PAYLOAD.copy()
         payload.pop('name')
