@@ -4,7 +4,6 @@ import allure
 import data
 from errors import UserErrors
 from methods.user_methods import UserMethods
-from conftest import create_new_user_and_delete
 
 @allure.feature('Изменение данных пользователя')
 class TestChangeUserData:

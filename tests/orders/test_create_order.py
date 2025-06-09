@@ -3,7 +3,6 @@ import allure
 from methods.order_methods import OrderMethods
 from data import ORDER_PAYLOAD, WRONG_ORDER_PAYLOAD
 from errors import OrderErrors
-from conftest import login_user
 
 @allure.feature('Создание заказа')
 class TestCreateOrder:

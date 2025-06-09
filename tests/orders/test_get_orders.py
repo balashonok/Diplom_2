@@ -2,7 +2,6 @@ import allure
 
 from errors import UserErrors
 from methods.order_methods import OrderMethods
-from conftest import login_user
 
 @allure.feature('Получение списка заказов')
 class TestGetOrders:
